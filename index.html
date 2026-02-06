@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Not Imagining It | PCOS Awareness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #fffcf7;
+            color: #1a1a1a;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(32, 22, 46, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #f5e6d3;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #f5e6d3;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+        }
+
+        nav a:hover {
+            color: #8b5a8e;
+        }
+
+        /* FULL SCREEN SECTIONS */
+        .full-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+        }
+
+        .section-content {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* HEADER SECTION */
+        .header {
+            background: #261a34;
+            color: #f5e6d3;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .stats-tracker {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 25px 35px;
+            margin: 40px auto 60px;
+            max-width: 500px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .stats-tracker.loaded {
+            opacity: 1;
+        }
+
+        .stats-tracker .stat-number {
+            color: #8b5a8e;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #f5e6d3;
+            opacity: 0.7;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator .text {
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 1.5em;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* STORY SECTION */
+        .story-section {
+            background: #fffcf7;
+        }
+
+        .story-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            color: #261a34;
+            font-weight: 700;
+        }
+
+        .story-section p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* STATS SECTION */
+        .stats-banner {
+            background: #f0e8f5;
+        }
+
+        .stats-banner h3 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #261a34;
+            text-align: center;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #8b5a8e;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .stat-item .label {
+            font-size: 1em;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* MISSION SECTION */
+        .mission-section {
+            background: #fffcf7;
+        }
+
+        .mission-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #261a34;
+            font-weight: 700;
+        }
+
+        .mission-section p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: #8b5a8e;
+            margin: 40px auto;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: #261a34;
+            color: #f5e6d3;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .start-button {
+            display: inline-block;
+            background: #7d4f80;
+            color: white;
+            padding: 20px 60px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .start-button:hover {
+            background: #6d3f70;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 90, 142, 0.4);
+        }
+
+        /* QUIZ STYLES */
+        .quiz-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 40px;
+            min-height: 100vh;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-screen {
+            background: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(45, 31, 61, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0e8f5;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5a8e 0%, #261a34 100%);
+            transition: width 0.3s ease;
+        }
+
+        .quiz-screen h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #261a34;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 400;
+        }
+
+        .quiz-screen label {
+            display: block;
+            padding: 18px;
+            margin: 15px 0;
+            background: #faf8f5;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .quiz-screen label:hover {
+            background: #f0e8f5;
+            border-color: #8b5a8e;
+            transform: translateX(5px);
+        }
+
+        .quiz-screen input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #8b5a8e;
+        }
+
+        .quiz-screen label:has(input[type="radio"]:checked) {
+            background: #f0e8f5;
+            border-color: #8b5a8e;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .quiz-button {
+            flex: 1;
+            background: #7d4f80;
+            color: white;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .quiz-button:hover {
+            background: #6d3f70;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 142, 0.3);
+        }
+
+        .quiz-button.back-btn {
+            background: #9e9e9e;
+            flex: 0.4;
+        }
+
+        .quiz-button.back-btn:hover {
+            background: #757575;
+        }
+
+        .quiz-button.home-btn {
+            background: #261a34;
+        }
+
+        .quiz-button.home-btn:hover {
+            background: #1a1125;
+        }
+
+        /* ADVOCACY STYLES IN QUIZ */
+        .advocacy-option {
+            margin: 25px 0;
+            padding: 20px;
+            background: #faf8f5;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .advocacy-option:hover {
+            border-color: #d4a5d6;
+        }
+
+        .advocacy-option label {
+            cursor: pointer;
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .advocacy-option label:hover {
+            background: transparent;
+            transform: none;
+        }
+
+        .advocacy-option input[type="checkbox"] {
+            margin-top: 4px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #8b5a8e;
+            flex-shrink: 0;
+        }
+
+        .email-input-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0d5e5;
+        }
+
+        .email-input-container input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #d4a5d6;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Segoe UI', sans-serif;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input-container input[type="email"]:focus {
+            outline: none;
+            border-color: #8b5a8e;
+        }
+
+        .email-input-container input[type="email"]:disabled {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        .quiz-info-text {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* RESULTS STYLES */
+        .results-content h1 {
+            color: #261a34;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .results-content h3 {
+            color: #8b5a8e;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .results-content p {
+            font-size: 1.1em;
+            margin-bottom: 18px;
+            color: #333;
+        }
+
+        .results-content strong {
+            color: #261a34;
+        }
+
+        .results-content em {
+            color: #8b5a8e;
+            font-style: italic;
+        }
+
+        .symptom-list {
+            margin: 25px 0;
+            padding-left: 30px;
+        }
+
+        .symptom-list li {
+            margin: 12px 0;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .results-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .results-content ul li {
+            margin: 12px 0;
+            color: #444;
+        }
+
+        .resources-box {
+            background: #f0e8f5;
+            border-left: 5px solid #8b5a8e;
+            padding: 30px;
+            margin: 35px 0;
+            border-radius: 4px;
+        }
+
+        .resources-box h3 {
+            margin-top: 0;
+            color: #261a34;
+        }
+
+        .resources-box a {
+            color: #8b5a8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .resources-box a:hover {
+            color: #7a4a7d;
+            text-decoration: underline;
+        }
+
+        .resource-item {
+            margin: 20px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0d5e5;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            color: #261a34;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .resource-description {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .landing-page {
+            display: block;
+        }
+
+        .landing-page.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .full-section {
+                padding: 100px 20px 60px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .quiz-screen {
+                padding: 30px 20px;
+            }
+            
+            .stat-row {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav id="mainNav">
+        <div class="container">
+            <div class="logo">You're Not Imagining It</div>
+            <ul>
+                <li><a onclick="scrollToSection('hero')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">About PCOS</a></li>
+                <li><a onclick="scrollToSection('stats')">The Problem</a></li>
+                <li><a onclick="scrollToSection('story')">My Story</a></li>
+                <li><a onclick="scrollToSection('cta')">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- LANDING PAGE -->
+    <div class="landing-page" id="landing">
+        <div class="full-section header" id="hero">
+            <div class="section-content">
+                <h1>You're Not Imagining It</h1>
+                <p class="subtitle">A PCOS awareness tool by someone who's been there.</p>
+                <div class="stats-tracker">
+                    Out of <span class="stat-number" id="totalResponses">0</span> people who have taken this assessment, 
+                    <span class="stat-number" id="pcosLikely">0</span> showed symptoms consistent with PCOS.
+                </div>
+            </div>
+            <div class="scroll-indicator" onclick="scrollToSection('about')">
+                <span class="text">Scroll to Explore</span>
+                <span class="arrow">↓</span>
+            </div>
+        </div>
+
+        <div class="full-section mission-section" id="about">
+            <div class="section-content">
+                <h2>What is PCOS?</h2>
+                <p>Polycystic Ovary Syndrome (PCOS) is a hormonal disorder that causes irregular periods, acne, weight gain, excess hair growth, and other symptoms. It is incredibly common - affecting about 10% of women - but most with PCOS don't know they have it.</p>
+
+                <p>Why? Because these symptoms are constantly dismissed as "temporary hormones" or blamed on not trying hard enough. By the time most people get diagnosed, they have been dealing with symptoms for years.</p>
+            </div>
+        </div>
+
+        <div class="full-section stats-banner" id="stats">
+            <div class="section-content">
+                <h3>The Problem</h3>
+                <div class="stat-row">
+                    <div class="stat-item">
+                        <div class="number">1 in 10</div>
+                        <div class="label">women have PCOS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">70%</div>
+                        <div class="label">remain undiagnosed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">2-5 years</div>
+                        <div class="label">average delay in diagnosis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="full-section story-section" id="story">
+            <div class="section-content">
+                <h2>My Story</h2>
+                <p>I created this tool after being diagnosed with PCOS. But the diagnosis was not a problem, it was an answer. Symptoms I had dismissed for years were suddenly connected with a possible solution in sight.</p>
+                
+                <p>I soon realized many women I knew had the same diagnosis. Or worse, they had symptoms but no diagnosis at all. PCOS is severely underresearched, and most people who have it don't even know.</p>
+
+                <p>If you have been told your irregular periods are just stress, your acne is a hygiene issue, or your fatigue means you are lazy - this is for you.</p>
+
+                <div class="divider"></div>
+
+                <h2>What This Tool Does</h2>
+                <p>This is not a diagnosis. It is a validation tool - a way to recognize patterns in your symptoms and get the language you need to advocate for yourself with doctors.</p>
+                
+                <p>By answering questions about symptoms you may have connected to PCOS, you will learn what is actually happening in your body and get specific scripts for talking to healthcare providers about these issues.</p>
+            </div>
+        </div>
+
+        <div class="full-section cta-section" id="cta">
+            <div class="section-content">
+                <h2>Ready to Check Your Symptoms?</h2>
+                <p>This assessment takes about 5 minutes. Your answers are completely private and will help you understand if PCOS might be worth discussing with your doctor.</p>
+                <button class="start-button" onclick="startAssessment()">Start the Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ SECTION -->
+    <div class="quiz-container" id="quizContainer">
+        <div id="question-1" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 7%;"></div></div>
+            <h2>How regular are your periods?</h2>
+            <label><input type="radio" name="q1" value="regular" onclick="saveAnswer(1, 'regular')"> They come every 21-35 days</label>
+            <label><input type="radio" name="q1" value="irregular" onclick="saveAnswer(1, 'irregular')"> They are unpredictable (sometimes months apart)</label>
+            <label><input type="radio" name="q1" value="none" onclick="saveAnswer(1, 'none')"> I rarely or never get them</label>
+            <div class="button-container">
+                <button class="quiz-button" onclick="nextQuestion(1)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-2" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 14%;"></div></div>
+            <h2>Do you have acne that won't go away?</h2>
+            <label><input type="radio" name="q2" value="no" onclick="saveAnswer(2, 'no')"> No, my skin is mostly clear</label>
+            <label><input type="radio" name="q2" value="mild" onclick="saveAnswer(2, 'mild')"> Some acne, but it's manageable</label>
+            <label><input type="radio" name="q2" value="severe" onclick="saveAnswer(2, 'severe')"> Yes, and it does not improve even with treatment</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(2)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(2)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-3" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 21%;"></div></div>
+            <h2>Have you noticed having oily skin?</h2>
+            <label><input type="radio" name="q3" value="no" onclick="saveAnswer(3, 'no')"> No</label>
+            <label><input type="radio" name="q3" value="mild" onclick="saveAnswer(3, 'mild')"> A little</label>
+            <label><input type="radio" name="q3" value="severe" onclick="saveAnswer(3, 'severe')"> Yes, very oily</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(3)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(3)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-4" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 28%;"></div></div>
+            <h2>Do you have dark patches of skin that will not go away no matter how much you wash?</h2>
+            <label><input type="radio" name="q4" value="no" onclick="saveAnswer(4, 'no')"> No</label>
+            <label><input type="radio" name="q4" value="mild" onclick="saveAnswer(4, 'mild')"> A little (barely noticeable)</label>
+            <label><input type="radio" name="q4" value="severe" onclick="saveAnswer(4, 'severe')"> Yes, on my neck, armpits, inner thighs, or other areas</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(4)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(4)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-5" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 35%;"></div></div>
+            <h2>Have you noticed extra hair growth in places like your face, legs, or stomach?</h2>
+            <label><input type="radio" name="q5" value="no" onclick="saveAnswer(5, 'no')"> No</label>
+            <label><input type="radio" name="q5" value="mild" onclick="saveAnswer(5, 'mild')"> A little more than I'd like</label>
+            <label><input type="radio" name="q5" value="severe" onclick="saveAnswer(5, 'severe')"> Yes, I have noticed it</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(5)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(5)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-6" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 42%;"></div></div>
+            <h2>Have you experienced unexplained weight gain that is hard to lose, even when you are trying?</h2>
+            <label><input type="radio" name="q6" value="no" onclick="saveAnswer(6, 'no')"> No</label>
+            <label><input type="radio" name="q6" value="mild" onclick="saveAnswer(6, 'mild')"> A little</label>
+            <label><input type="radio" name="q6" value="severe" onclick="saveAnswer(6, 'severe')"> Yes, no matter how hard I try</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(6)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(6)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-7" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+            <h2>Do you notice significant hair loss or thinning?</h2>
+            <label><input type="radio" name="q7" value="no" onclick="saveAnswer(7, 'no')"> No</label>
+            <label><input type="radio" name="q7" value="mild" onclick="saveAnswer(7, 'mild')"> A little</label>
+            <label><input type="radio" name="q7" value="severe" onclick="saveAnswer(7, 'severe')"> Yes, noticeably</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(7)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(7)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-8" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 57%;"></div></div>
+            <h2>Do you have dandruff or an itchy scalp?</h2>
+            <label><input type="radio" name="q8" value="no" onclick="saveAnswer(8, 'no')"> No</label>
+            <label><input type="radio" name="q8" value="mild" onclick="saveAnswer(8, 'mild')"> A little</label>
+            <label><input type="radio" name="q8" value="severe" onclick="saveAnswer(8, 'severe')"> Yes, it is persistent</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(8)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(8)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-9" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 64%;"></div></div>
+            <h2>Do you feel exhausted or have trouble focusing, even when you have gotten enough sleep?</h2>
+            <label><input type="radio" name="q9" value="no" onclick="saveAnswer(9, 'no')"> No</label>
+            <label><input type="radio" name="q9" value="mild" onclick="saveAnswer(9, 'mild')"> Sometimes</label>
+            <label><input type="radio" name="q9" value="severe" onclick="saveAnswer(9, 'severe')"> Yes, often</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(9)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(9)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-10" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 71%;"></div></div>
+            <h2>Do you experience drastic mood swings, anxiety, or depression?</h2>
+            <label><input type="radio" name="q10" value="no" onclick="saveAnswer(10, 'no')"> No</label>
+            <label><input type="radio" name="q10" value="mild" onclick="saveAnswer(10, 'mild')"> Sometimes</label>
+            <label><input type="radio" name="q10" value="severe" onclick="saveAnswer(10, 'severe')"> Yes, frequently</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(10)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(10)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-11" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 78%;"></div></div>
+            <h2>How long have you been experiencing the symptoms you marked?</h2>
+            <label><input type="radio" name="q11" value="short" onclick="saveAnswer(11, 'short')"> Less than 3 months</label>
+            <label><input type="radio" name="q11" value="medium" onclick="saveAnswer(11, 'medium')"> 3-12 months</label>
+            <label><input type="radio" name="q11" value="long" onclick="saveAnswer(11, 'long')"> More than a year</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(11)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(11)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-12" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+            <h2>What is your age?</h2>
+            <label><input type="radio" name="q12" value="under18" onclick="saveAnswer(12, 'under18')"> Under 18</label>
+            <label><input type="radio" name="q12" value="18-24" onclick="saveAnswer(12, '18-24')"> 18-24</label>
+            <label><input type="radio" name="q12" value="25-34" onclick="saveAnswer(12, '25-34')"> 25-34</label>
+            <label><input type="radio" name="q12" value="35-44" onclick="saveAnswer(12, '35-44')"> 35-44</label>
+            <label><input type="radio" name="q12" value="45+" onclick="saveAnswer(12, '45+')"> 45+</label>
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(12)">Back</button>
+                <button class="quiz-button" onclick="nextQuestion(12)">Next</button>
+            </div>
+        </div>
+
+        <div id="question-13" class="quiz-screen" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+            <h2>Want to help others understand PCOS?</h2>
+            <p class="quiz-info-text">Your participation helps raise awareness. All information is optional and kept private.</p>
+            
+            <div class="advocacy-option">
+                <label>
+                    <input type="checkbox" id="emailUpdates" onchange="toggleEmailInput()">
+                    <span>Email me updates when we publish findings from this survey (your email stays private and will only be used for survey updates)</span>
+                </label>
+                <div class="email-input-container" id="emailInputContainer">
+                    <input type="email" id="emailInput" placeholder="your.email@example.com" disabled>
+                </div>
+            </div>
+            
+            <div class="advocacy-option">
+                <label>
+                    <input type="checkbox" id="advocacy">
+                    <span>I would be interested in getting involved with PCOS advocacy in the future</span>
+                </label>
+            </div>
+
+            <div class="button-container">
+                <button class="quiz-button back-btn" onclick="previousQuestion(13)">Back</button>
+                <button class="quiz-button" onclick="showResults()">See Results</button>
+            </div>
+        </div>
+
+        <div id="results" class="quiz-screen" style="display:none;">
+            <div class="results-content" id="results-content"></div>
+            <div class="button-container">
+                <button class="quiz-button home-btn" onclick="goHome()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let answers = {};
+
+        // GOOGLE SHEETS CONFIGURATION
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3OgebHjfRV6QVxmPJqkK5JIrwnJXUAkHGVWqXEYN5e4sJuNt_RuH8t_5Xtw5ENriq/exec';
+
+        window.addEventListener('DOMContentLoaded', function() {
+            fetchStats();
+        });
+
+        function fetchStats() {
+            // Set a 2 second timeout for loading stats
+            const timeout = new Promise((resolve) => {
+                setTimeout(() => resolve({ total: 0, pcosLikely: 0 }), 2000);
+            });
+
+            const fetchRequest = fetch(GOOGLE_SCRIPT_URL + '?action=getStats')
+                .then(response => response.json())
+                .catch(error => {
+                    console.log('Stats loading failed, using defaults');
+                    return { total: 0, pcosLikely: 0 };
+                });
+
+            // Race between timeout and actual fetch - use whichever completes first
+            Promise.race([fetchRequest, timeout])
+                .then(data => {
+                    document.getElementById('totalResponses').textContent = data.total || 0;
+                    document.getElementById('pcosLikely').textContent = data.pcosLikely || 0;
+                    document.querySelector('.stats-tracker').classList.add('loaded');
+                });
+        }
+
+        function saveToGoogleSheets(score, resultType) {
+            const emailCheckbox = document.getElementById('emailUpdates');
+            const advocacyCheckbox = document.getElementById('advocacy');
+            const emailInput = document.getElementById('emailInput');
+
+            const data = {
+                action: 'saveResponse',
+                timestamp: new Date().toISOString(),
+                answers: answers,
+                score: score,
+                resultType: resultType,
+                wantsEmailUpdates: emailCheckbox.checked,
+                email: emailCheckbox.checked ? emailInput.value : '',
+                interestedInAdvocacy: advocacyCheckbox.checked
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(() => {
+                fetchStats();
+            }).catch(error => {
+                console.log('Failed to save to Google Sheets:', error);
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function saveAnswer(questionNum, value) {
+            answers['q' + questionNum] = value;
+        }
+
+        function startAssessment() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('quizContainer').classList.add('active');
+            document.getElementById('mainNav').style.display = 'none';
+            document.getElementById('question-1').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function goHome() {
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('landing').classList.remove('hidden');
+            document.getElementById('mainNav').style.display = 'block';
+            
+            for (let i = 1; i <= 13; i++) {
+                document.getElementById('question-' + i).style.display = 'none';
+            }
+            document.getElementById('results').style.display = 'none';
+            
+            answers = {};
+            
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.checked = false);
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            
+            document.getElementById('emailInput').value = '';
+            document.getElementById('emailInput').disabled = true;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextQuestion(current) {
+            // Validate that a question has been answered (questions 1-12 only)
+            if (current <= 12) {
+                const questionKey = 'q' + current;
+                if (!answers[questionKey]) {
+                    return;
+                }
+            }
+            
+            document.getElementById('question-' + current).style.display = 'none';
+            document.getElementById('question-' + (current + 1)).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function previousQuestion(current) {
+            document.getElementById('question-' + current).style.display = 'none';
+            document.getElementById('question-' + (current - 1)).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function toggleEmailInput() {
+            const checkbox = document.getElementById('emailUpdates');
+            const emailInput = document.getElementById('emailInput');
+            emailInput.disabled = !checkbox.checked;
+            if (!checkbox.checked) {
+                emailInput.value = '';
+            }
+        }
+
+        function showResults() {
+            // Validate that all required questions (1-12) have been answered
+            for (let i = 1; i <= 12; i++) {
+                const questionKey = 'q' + i;
+                if (!answers[questionKey]) {
+                    return;
+                }
+            }
+            
+            document.getElementById('question-13').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            window.scrollTo(0, 0);
+            
+            let score = 0;
+            
+            if (answers.q1 === 'irregular') score += 2;
+            if (answers.q1 === 'none') score += 2.5;
+            if (answers.q4 === 'severe') score += 2;
+            if (answers.q4 === 'mild') score += 1;
+            if (answers.q5 === 'severe') score += 2;
+            if (answers.q5 === 'mild') score += 1;
+            if (answers.q2 === 'severe') score += 1.5;
+            if (answers.q2 === 'mild') score += 1;
+            if (answers.q6 === 'severe') score += 1;
+            if (answers.q6 === 'mild') score += 0.5;
+            if (answers.q7 === 'severe') score += 1;
+            if (answers.q7 === 'mild') score += 0.5;
+            if (answers.q9 === 'severe') score += 1;
+            if (answers.q9 === 'mild') score += 0.5;
+            if (answers.q10 === 'severe') score += 1;
+            if (answers.q10 === 'mild') score += 0.5;
+            if (answers.q3 === 'severe') score += 0.5;
+            if (answers.q3 === 'mild') score += 0.25;
+            if (answers.q8 === 'severe') score += 0.5;
+            if (answers.q8 === 'mild') score += 0.25;
+
+            const symptomMap = {
+                q1: { check: ['irregular', 'none'], text: "The irregular periods? A key sign that your hormones are out of balance." },
+                q2: { check: ['mild', 'severe'], text: "The acne? Hormonal, not a hygiene issue." },
+                q3: { check: ['mild', 'severe'], text: "The oily skin? Caused by elevated androgen levels, not because you aren't washing enough." },
+                q4: { check: ['mild', 'severe'], text: "Those dark patches on your skin? That is likely insulin resistance, not dirt." },
+                q5: { check: ['mild', 'severe'], text: "The extra hair growth? That is from elevated androgens (male hormones that all women have, but yours may be higher)." },
+                q6: { check: ['mild', 'severe'], text: "The weight gain that won't budge? Often tied to insulin resistance, not a lack of willpower." },
+                q7: { check: ['mild', 'severe'], text: "The hair thinning on your head? Another sign of hormonal imbalance." },
+                q8: { check: ['mild', 'severe'], text: "The persistent dandruff? Related to increased oil production from hormonal changes." },
+                q9: { check: ['mild', 'severe'], text: "The fatigue and brain fog? Your body is dealing with a hormone imbalance and possibly insulin resistance." },
+                q10: { check: ['mild', 'severe'], text: "The drastic mood swings, anxiety, or depression? PCOS affects mental health, it is not just 'in your head.'" }
+            };
+
+            let symptomExplanations = Object.keys(symptomMap)
+                .filter(q => symptomMap[q].check.includes(answers[q]))
+                .map(q => '<li>' + symptomMap[q].text + '</li>')
+                .join('');
+
+            let resultsHTML = '';
+            let resultType = '';
+            
+            if (score >= 5) {
+                resultType = 'high';
+                resultsHTML = `
+                    <h1>PCOS is Likely</h1>
+                    <p>If people have told you that your acne will clear up if you just wash your face more, or that you're tired from being lazy, or that your weight is just about willpower - <strong>they are wrong.</strong></p>
+                    
+                    <p>These symptoms you are experiencing could be signs of PCOS (Polycystic Ovary Syndrome), a hormonal condition that affects 1 in 10 women. Most people with PCOS don't know they have it because these symptoms get dismissed as "temporary hormonal changes."</p>
+                    
+                    <h3>What is actually happening:</h3>
+                    <ul class="symptom-list">${symptomExplanations}</ul>
+                    
+                    <p><strong>You deserve to be taken seriously.</strong></p>
+                    
+                    <h3>How to talk to your doctor:</h3>
+                    <p>Say this: <em>"I have been tracking these symptoms: [list the symptoms you marked]. I read that these could be signs of PCOS. Can we do blood work to check my hormone levels and test for insulin resistance?"</em></p>
+                    
+                    <h3>What tests to ask for:</h3>
+                    <ul>
+                        <li>Hormone panel (testosterone, LH, FSH)</li>
+                        <li>Fasting glucose and insulin levels</li>
+                        <li>Pelvic ultrasound (to check for ovarian cysts)</li>
+                    </ul>
+                    
+                    <h3>If your doctor dismisses you:</h3>
+                    <p>Say: <em>"I would like this concern noted in my medical chart. Can you explain why you don't think testing is necessary?"</em></p>
+                    
+                    <p>You have the right to advocate for yourself. If they still won't listen, ask for a referral to an endocrinologist or find a different doctor who specializes in hormonal health. Understand that PCOS may not be the answer, but it is possible. These doctors know best on the subject and will guide you as needed.</p>
+                    
+                    <p><strong>PCOS is manageable.</strong> With proper diagnosis, your doctor can discuss treatment options including lifestyle modifications, medication, or hormonal therapies tailored to your needs.</p>
+                    
+                    <div class="resources-box">
+                        <h3>Trusted PCOS Resources</h3>
+                        
+                        <div class="resource-item">
+                            <div class="resource-title"><a href="https://pcoschallenge.org/" target="_blank">PCOS Challenge</a></div>
+                            <div class="resource-description">The leading national PCOS organization offering support groups, educational programs, and advocacy for people with PCOS.</div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="resource-title"><a href="https://www.nichd.nih.gov/health/topics/pcos" target="_blank">National Institutes of Health (NIH)</a></div>
+                            <div class="resource-description">Evidence-based information about PCOS from the federal government's research institute.</div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="resource-title"><a href="https://www.askpcos.org/" target="_blank">AskPCOS</a></div>
+                            <div class="resource-description">Expert-developed app with articles based on the latest PCOS guidelines, plus discussion forums and symptom tracking.</div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="resource-title"><a href="https://www.acog.org/womens-health/faqs/polycystic-ovary-syndrome-pcos" target="_blank">American College of Obstetricians and Gynecologists (ACOG)</a></div>
+                            <div class="resource-description">Professional medical information about PCOS diagnosis, symptoms, and treatment options.</div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="resource-title"><a href="https://www.pcosaa.org/" target="_blank">PCOS Awareness Association</a></div>
+                            <div class="resource-description">Non-profit organization providing education, support services, and a directory of PCOS specialists.</div>
+                        </div>
+                    </div>
+                    
+                    <p><strong>You are not imagining this. These symptoms are real, and getting diagnosed can help you manage them.</strong></p>
+                `;
+            } else if (score >= 2) {
+                resultType = 'medium';
+                resultsHTML = `
+                    <h1>Some Symptoms Worth Monitoring</h1>
+                    <p>You have a few symptoms that <em>could</em> be related to PCOS, though they might also be caused by other things (stress, thyroid issues, normal hormone fluctuations).</p>
+                    
+                    <h3>What you should do:</h3>
+                    <ul>
+                        <li>Keep track of these symptoms - do they get worse or stay the same?</li>
+                        <li>If they are bothering you or affecting your daily life, talk to your doctor</li>
+                        <li>Even if it isn't PCOS, you deserve answers</li>
+                    </ul>
+                    
+                    <h3>If you decide to talk to your doctor:</h3>
+                    <p>Say: <em>"I have noticed these symptoms: [list the symptoms you marked]. They have been going on for [timeframe]. Could we do some testing to figure out what is causing them?"</em></p>
+                    
+                    <p>Trust your instincts. If something feels off, it is worth investigating.</p>
+                `;
+            } else {
+                resultType = 'low';
+                resultsHTML = `
+                    <h1>PCOS Seems Unlikely</h1>
+                    <p>Based on your answers, PCOS does not seem likely right now. But that doesn't mean your concerns are not valid.</p>
+                    
+                    <h3>If something still feels wrong:</h3>
+                    <ul>
+                        <li>Your body knows itself better than any quiz</li>
+                        <li>If you are worried about your periods, energy, or anything else - talk to a doctor</li>
+                        <li>You do not need a bunch of symptoms to deserve medical care</li>
+                    </ul>
+                    
+                    <p><strong>Remember:</strong> This quiz is not a diagnosis. It is just a tool to help you recognize patterns. If you are concerned, see a healthcare provider.</p>
+                `;
+            }
+            
+            document.getElementById('results-content').innerHTML = resultsHTML;
+            saveToGoogleSheets(score, resultType);
+        }
+    </script>
+</body>
+</html>
